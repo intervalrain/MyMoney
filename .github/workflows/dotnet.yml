@@ -1,4 +1,4 @@
-name: Backend - Build and Deploy
+name: Backend - Build and Test
 
 on:
   push:
@@ -25,28 +25,28 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
+
+  # Run dotnet build and test
+  # - name: dotnet restore, build and test
+  #   working-directory: ${{ env.DOTNET_APP_SOURCE_PATH }}
+  #   run: |
+  #     dotnet workload install maui-android
+  #     dotnet restore
+  #     dotnet build -c Release --no-restore
+  #     dotnet test -c Release --no-build --verbosity normal
   
-    # Run dotnet build and test
-    # - name: dotnet restore, build and test
-    #   working-directory: ${{ env.DOTNET_APP_SOURCE_PATH }}
-    #   run: |
-    #     dotnet workload install maui-android
-    #     dotnet restore
-    #     dotnet build -c Release --no-restore
-    #     dotnet test -c Release --no-build --verbosity normal
-    
-    - name: dump gitHub context
-      run: |
-        echo '```' >> $GITHUB_STEP_SUMMARY
-        echo '${{ toJSON(env) }}' >> $GITHUB_STEP_SUMMARY
-        echo '${{ toJSON(github) }}' >> $GITHUB_STEP_SUMMARY
-        echo '```' >> $GITHUB_STEP_SUMMARY
-  deploy:
-    name: Deploy app
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: flyctl deploy --remote-only
-        env:
-          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+  #   - name: dump gitHub context
+  #     run: |
+  #       echo '```' >> $GITHUB_STEP_SUMMARY
+  #       echo '${{ toJSON(env) }}' >> $GITHUB_STEP_SUMMARY
+  #       echo '${{ toJSON(github) }}' >> $GITHUB_STEP_SUMMARY
+  #       echo '```' >> $GITHUB_STEP_SUMMARY
+  # deploy:
+  #   name: Deploy app
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - uses: superfly/flyctl-actions/setup-flyctl@master
+  #     - run: flyctl deploy --remote-only
+  #       env:
+  #         FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
