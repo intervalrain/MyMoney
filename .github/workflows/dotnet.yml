@@ -30,6 +30,7 @@ jobs:
     - name: dotnet restore, build and test
       working-directory: ${{ env.DOTNET_APP_SOURCE_PATH }}
       run: |
+        dotnet workload install maui-android
         dotnet restore
         dotnet build -c Release --no-restore
         dotnet test -c Release --no-build --verbosity normal
