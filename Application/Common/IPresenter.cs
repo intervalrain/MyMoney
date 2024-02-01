@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Application.Common
+namespace Applications.Common
 {
 	public interface IPresenter<in TResponse>
 	{

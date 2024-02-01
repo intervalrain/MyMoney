@@ -7,6 +7,7 @@
 
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
+    <OutputType>Library</OutputType>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,9 +24,11 @@
   <ItemGroup>
     <None Remove="DomainTests\" />
     <None Remove="ApplicationTests\" />
+    <None Remove="DomainTests\Testcases\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DomainTests\" />
     <Folder Include="ApplicationTests\" />
+    <Folder Include="DomainTests\Testcases\" />
   </ItemGroup>
 </Project>

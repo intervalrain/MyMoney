@@ -5,7 +5,7 @@ VisualStudioVersion = 25.0.1706.8
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation", "Presentation\Presentation.csproj", "{A122101C-B347-4F96-A17B-A389E241CE46}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{936776FD-6F35-4BD1-A9CC-38E87256ACEC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Applications", "Application\Applications.csproj", "{936776FD-6F35-4BD1-A9CC-38E87256ACEC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{C5C50C40-2C38-4584-A0E4-2C54D4A2E30A}"
 EndProject
