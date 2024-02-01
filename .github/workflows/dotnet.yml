@@ -1,0 +1,51 @@
+name: Backend - Build and Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  DOTNET_VERSION: '8.0.x'
+  DOTNET_APP_SOURCE_PATH: '.'
+  #DOTNET_APP_PUBLISH_PROJECT_PATH: './src/BackEnd/src/InterfaceAdapter/WebApi'
+
+jobs:
+  build:
+    name: Build, Test and Publish Artifact
+    runs-on: ubuntu-latest
+    steps:
+    # Checkout the repo
+    - name: git checkout
+      uses: actions/checkout@v3
+    
+    # Setup .NET SDK
+    - name: setup .NET SDK ${{ env.DOTNET_VERSION }}
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+  
+    # Run dotnet build and test
+    - name: dotnet restore, build and test
+      working-directory: ${{ env.DOTNET_APP_SOURCE_PATH }}
+      run: |
+        dotnet restore
+        dotnet build -c Release --no-restore
+        dotnet test -c Release --no-build --verbosity normal
+    
+    - name: dump gitHub context
+      run: |
+        echo '```' >> $GITHUB_STEP_SUMMARY
+        echo '${{ toJSON(env) }}' >> $GITHUB_STEP_SUMMARY
+        echo '${{ toJSON(github) }}' >> $GITHUB_STEP_SUMMARY
+        echo '```' >> $GITHUB_STEP_SUMMARY
+  deploy:
+    name: Deploy app
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - run: flyctl deploy --remote-only
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
