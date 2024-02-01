@@ -16,4 +16,16 @@
     <PackageReference Include="coverlet.collector" Version="6.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\Application\Application.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="DomainTests\" />
+    <None Remove="ApplicationTests\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DomainTests\" />
+    <Folder Include="ApplicationTests\" />
+  </ItemGroup>
 </Project>

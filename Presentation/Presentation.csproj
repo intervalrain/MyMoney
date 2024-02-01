@@ -71,4 +71,7 @@
 	<ItemGroup>
 	  <Folder Include="Views\" />
 	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\Application\Application.csproj" />
+	</ItemGroup>
 </Project>
