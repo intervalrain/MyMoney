@@ -1,10 +1,5 @@
-﻿using System;
-namespace Domain
+﻿namespace Domain
 {
-	public class Item
-	{
-		public DateTime Time { get; set; }
-		public int Amount { get; set; }
-	}
+	public record Item(DateTime Time, string What, int Amount);
 }
 

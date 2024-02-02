@@ -18,6 +18,11 @@ namespace Domain
 		}
 
         public abstract int Sum();
+
+        public virtual void AddItem(DateTime time, string what, int amount)
+        {
+            _items.Add(new Item(time, what, amount));
+        }
 	}
 }
 

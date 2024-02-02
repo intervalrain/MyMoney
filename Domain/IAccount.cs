@@ -8,6 +8,7 @@ namespace Domain
         public IReadOnlyList<Item> Items { get; }
 
 		public int Sum();
+        public void AddItem(DateTime time, string what, int amount);
     }
 }
 

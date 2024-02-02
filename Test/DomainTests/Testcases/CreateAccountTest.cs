@@ -1,6 +1,7 @@
 ﻿using Domain;
 using Domain.Enums;
 using Domain.Events;
+using Domain.Exceptions;
 
 namespace Test.DomainTests.Testcases
 {
@@ -35,6 +36,26 @@ namespace Test.DomainTests.Testcases
 							.MoveNext(new CreateAccountEvent(AccountType.Bank, "GuoTai", 200000))
 							.NoMore();
         }
-	}
+
+        [TestMethod]
+        public void CreateDuplicatedAccount()
+        {
+            // Arrange
+            var user = new User("Rain Hu");
+            var accountName = "YuanDa";
+
+            // Act
+            user.CreateAccount(AccountType.Bank, accountName, 100000);
+            Assert.ThrowsException<DuplicatedAccountNameException>(() => user.CreateAccount(AccountType.Bank, accountName, 200000));
+
+            // Assert
+            Assert.AreEqual(1, user.Accounts.Count);
+            Assert.AreEqual(100000, user.GetAccountBalance(accountName));
+            Assert.AreEqual(100000, user.GetTotalAssets());
+            user.DomainEvents.MoveNext(new CreateAccountEvent(AccountType.Bank, "YuanDa", 100000))
+                             .NoMore();
+            
+        }
+    }
 }
 
