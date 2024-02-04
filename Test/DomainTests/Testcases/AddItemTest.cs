@@ -12,7 +12,7 @@ namespace Test.DomainTests.Testcases
 		public void Income_Test()
 		{
 			// Arrange
-			var user = new User("Rain Hu");
+			var user = new User(1, "Rain Hu");
             var accountName = "Bank";
             var itemName = "salary";
             var initMoney = 10000;
@@ -36,7 +36,7 @@ namespace Test.DomainTests.Testcases
 		public void Pay_Test()
 		{
             // Arrange
-            var user = new User("Rain Hu");
+            var user = new User(1, "Rain Hu");
             var accountName = "Cash";
             var itemName = "breakfast";
             var initMoney = 1000;
@@ -60,7 +60,7 @@ namespace Test.DomainTests.Testcases
         public void PayNotEnough_Test()
         {
             // Arrange
-            var user = new User("Rain Hu");
+            var user = new User(1, "Rain Hu");
             var accountName = "Cash";
             var itemName = "dinner";
             var initMoney = 1000;
@@ -83,7 +83,7 @@ namespace Test.DomainTests.Testcases
 		public void Transaction_Test()
 		{
             // Arrange
-            var user = new User("Rain Hu");
+            var user = new User(1, "Rain Hu");
             var fromName = "Cash";
             var toName = "Bank";
             var cash = user.CreateAccount(AccountType.Cash, fromName, 1000);

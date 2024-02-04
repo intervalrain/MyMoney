@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Presentation.Views;
 using Domain.Common;
-using Infrastructure;
+using Infrastructure.DbContexts;
 
 namespace Presentation;
 
@@ -30,7 +30,6 @@ public static class MauiProgram
 		builder.Services.AddScoped<IUserRepository, UserRepository>();
 		builder.Services.AddSingleton<IEventBus<DomainEvent>, FakeEventBus>();
 		var connStr = "Host=localhost;Port=5432;Username=postgres;Password=#rain1011;Database=mym";
-            //builder.Configuration.GetConnectionString("mymoney");
         builder.Services.AddDbContextPool<UserDbContext>(opt => opt.UseNpgsql(connStr));
         
 #if DEBUG

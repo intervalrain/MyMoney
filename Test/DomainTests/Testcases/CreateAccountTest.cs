@@ -12,8 +12,8 @@ namespace Test.DomainTests.Testcases
 		public void CreateAccount()
 		{
 			// Arrange
-			var rain = new User("Rain Hu");
-			var eva = new User("Eva Hsu");
+			var rain = new User(1, "Rain Hu");
+			var eva = new User(2, "Eva Hsu");
 
             // Act
             rain.CreateAccount(AccountType.Cash, "Cash", 10000);
@@ -41,7 +41,7 @@ namespace Test.DomainTests.Testcases
         public void CreateDuplicatedAccount()
         {
             // Arrange
-            var user = new User("Rain Hu");
+            var user = new User(1, "Rain Hu");
             var accountName = "YuanDa";
 
             // Act

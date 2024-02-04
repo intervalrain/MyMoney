@@ -5,6 +5,8 @@ using System.Reflection;
 using System.Text;
 using Dapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Infrastructure.Common
 {
@@ -36,32 +38,38 @@ namespace Infrastructure.Common
 
         public IEnumerable<T> FindAll(params object[] param)
         {
-            var type = typeof(T);
-            var properties = type.GetProperties();
             var sql = new StringBuilder($"select * from {_tableName} where 1=1");
             var parameters = new DynamicParameters();
-            for (int i = 0; i < param.Length; i++)
+            foreach (var obj in param)
             {
-                var propertyName = properties[i].Name;
-                var propertyValue = param[i];
-                sql.Append($" and {propertyName} = @{propertyName}");
-                parameters.Add(propertyName, propertyValue);
+                var properties = obj.GetType().GetProperties();
+                foreach (var prop in properties)
+                {
+                    var name = prop.Name;
+                    var value = prop.GetValue(obj);
+
+                    sql.Append($" and {name} = @{name}");
+                    parameters.Add(name, value);
+                }
             }
             return _conn.Query<T>(sql.ToString(), parameters);
         }
 
         public T Find(params object[] param)
         {
-            var type = typeof(T);
-            var properties = type.GetProperties();
             var sql = new StringBuilder($"select * from {_tableName} where 1=1");
             var parameters = new DynamicParameters();
-            for (int i = 0; i < param.Length; i++)
+            foreach (var obj in param)
             {
-                var propertyName = properties[i].Name;
-                var propertyValue = param[i];
-                sql.Append($" and {propertyName} = @{propertyValue}");
-                parameters.Add(propertyName, propertyValue);
+                var properties = obj.GetType().GetProperties();
+                foreach (var prop in properties)
+                {
+                    var name = prop.Name;
+                    var value = prop.GetValue(obj);
+
+                    sql.Append($" and {name} = @{name}");
+                    parameters.Add(name, value);
+                }
             }
             return _conn.QueryFirstOrDefault<T>(sql.ToString(), parameters);
         }
@@ -94,10 +102,6 @@ namespace Infrastructure.Common
             var sql = $"delete from {_tableName} where {_primaryKey} = @Id";
             var param = new { Id = id };
             _conn.Execute(sql, param);
-        }
-
-        public void Save()
-        {
         }
 
         private string GetTableName()

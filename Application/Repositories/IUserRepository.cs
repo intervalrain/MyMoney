@@ -6,11 +6,11 @@ namespace Applications.Repositories
 	{
 		List<User> GetAllUsers();
 
-		User FindUserById(string userId);
+		User FindUserById(int userId);
 
 		void Update(User user);
 
-        void Create(User user);
+        int Create(string userName);
 
         void Delete(User user);
     }

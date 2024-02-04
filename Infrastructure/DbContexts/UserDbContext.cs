@@ -1,7 +1,7 @@
 ﻿using Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure
+namespace Infrastructure.DbContexts
 {
 	public class UserDbContext : DbContext
 	{

@@ -1,13 +1,12 @@
 ﻿using Applications.Common;
 using Applications.Repositories;
-using Domain;
 using Domain.Common;
 
 namespace Applications.Usecases
 {
-    public record CreateUserRequest(string UserId) : Request();
+    public record CreateUserRequest(string UserName) : Request();
 
-    public record CreateUserResponse(string UserId) : Response();
+    public record CreateUserResponse(int UserId) : Response();
 
     public class CreateUserUsecase : Usecase<CreateUserRequest, CreateUserResponse>
 	{
@@ -22,9 +21,8 @@ namespace Applications.Usecases
 
         public override async Task ExecuteAsync(CreateUserRequest request, IPresenter<CreateUserResponse> presenter)
         {
-            User user = new User(request.UserId);
-            _repository.Save(user);
-            await presenter.PresentAsync(new CreateUserResponse(user.UserName));
+            var userId = _repository.Create(request.UserName);
+            await presenter.PresentAsync(new CreateUserResponse(userId));
         }
     }
 }

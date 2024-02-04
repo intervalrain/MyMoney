@@ -1,5 +1,4 @@
-﻿using System.Security.Principal;
-using Domain.Common;
+﻿using Domain.Common;
 using Domain.Enums;
 using Domain.Events;
 using Domain.Exceptions;
@@ -8,10 +7,11 @@ namespace Domain
 {
 	public class User : AbstractAggregateRoot
     {
+		public int UserId { get; set; }
 		public string UserName { get; set; }
 		public Dictionary<string, IAccount> Accounts { get; set; } = new();
 
-		public User(string userName)
+		public User(int UserId, string userName)
 		{
 			UserName = userName;
 		}

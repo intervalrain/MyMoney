@@ -1,9 +1,9 @@
 ﻿using System.Data;
 using Applications.Repositories;
-using Microsoft.EntityFrameworkCore;
 using Infrastructure.Entities;
-using Dapper;
 using Infrastructure.Common;
+using Infrastructure.Exceptions;
+using Infrastructure.DbContexts;
 
 namespace Infrastructure.Repositories
 {
@@ -17,34 +17,48 @@ namespace Infrastructure.Repositories
         public List<Domain.User> GetAllUsers()
         {
             var users = GetAll();
-            return users.Select(x => new Domain.User(x.UserName)).ToList();
+            return users.Select(x => new Domain.User(x.UserId, x.UserName)).ToList();
         }
 
-        public Domain.User FindUserById(string userName)
+        public Domain.User FindUserById(int userId)
         {
-            var user = Find(new { UserName = userName });
-            return new Domain.User(user.UserName);
+            var user = Find(new { UserId = userId });
+            return new Domain.User(user.UserId, user.UserName);
         }
 
         public void Update(Domain.User user)
         {
-            throw new NotImplementedException();
-        }
-
-        public void Create(Domain.User user)
-        {
-            var count = GetSerialNumber(GetAll());
-            Insert(new User
+            var dtoUser = Find(new { user.UserId });
+            if (dtoUser is null)
             {
-                UserId = count,
+                throw new UserNotExistException(user.UserName);
+            }
+            Update(new User
+            {
+                UserId = user.UserId,
                 UserName = user.UserName
             });
         }
 
+        public int Create(string userName)
+        {
+            var users = GetAll();
+            if (users.Any(u => u.UserName == userName))
+            {
+                throw new DuplicatedUserNameException(userName);
+            }
+            var count = GetSerialNumber(users);
+            Insert(new User
+            {
+                UserId = count,
+                UserName = userName
+            });
+            return count;
+        }
+
         public void Delete(Domain.User user)
         {
-            var id = Find(user.UserName).UserId;
-            base.Delete(id);
+            base.Delete(user.UserId);
         }
 
         private int GetSerialNumber(IEnumerable<User> users)
