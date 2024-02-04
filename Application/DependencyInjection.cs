@@ -1,12 +1,11 @@
-﻿using System;
-using Applications.Common;
+﻿using Applications.Common;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Application
+namespace Applications
 {
 	public static class DependencyInjection
 	{
-		public static IServiceCollection AddMyMoneyApplcation(this IServiceCollection services)
+		public static IServiceCollection AddMyMoneyApplication(this IServiceCollection services)
 		{
 			return services.AddUseCases();
 		}

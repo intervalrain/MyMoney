@@ -1,11 +1,5 @@
-﻿using System;
-namespace Applications.Common
+﻿namespace Applications.Common
 {
-	public class Response
-	{
-		public Response()
-		{
-		}
-	}
+	public record Response();
 }
 

@@ -15,6 +15,9 @@
     <PackageReference Include="MSTest.TestAdapter" Version="3.0.4" />
     <PackageReference Include="MSTest.TestFramework" Version="3.0.4" />
     <PackageReference Include="coverlet.collector" Version="6.0.0" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" Version="1.1.0" />
+    <PackageReference Include="Npgsql" Version="8.0.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,10 +28,12 @@
     <None Remove="DomainTests\" />
     <None Remove="ApplicationTests\" />
     <None Remove="DomainTests\Testcases\" />
+    <None Remove="InfrastructureTest\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DomainTests\" />
     <Folder Include="ApplicationTests\" />
     <Folder Include="DomainTests\Testcases\" />
+    <Folder Include="InfrastructureTest\" />
   </ItemGroup>
 </Project>

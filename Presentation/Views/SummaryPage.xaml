@@ -2,14 +2,85 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 xmlns:views="clr-namespace:Presentation.Views"
              x:Class="Presentation.Views.SummaryPage"
-			 Title="MyMoney">
-    <BoxView Color="Teal">
-        <BoxView.GestureRecognizers>
-            <SwipeGestureRecognizer Direction="Left" Swiped="OnSwiped" />
-            <SwipeGestureRecognizer Direction="Right" Swiped="OnSwiped" />
-            <SwipeGestureRecognizer Direction="Up" Swiped="OnSwiped" />
-            <SwipeGestureRecognizer Direction="Down" Swiped="OnSwiped" />
-        </BoxView.GestureRecognizers>
-    </BoxView>
+			 Title="MyMoney"
+             Loaded="ContentPage_Loaded">
 
+    <Grid BackgroundColor="Transparent">
+        <VerticalStackLayout Padding="40">
+            <Picker x:Name="userPicker"
+                    Title="Select a User"
+                    FontSize="Subtitle"
+                    FontAttributes="Bold"
+                    HeightRequest="60"
+                    BackgroundColor="LightGray">
+            </Picker>
+            <ListView x:Name="summaryList"
+                      BackgroundColor="Transparent"
+                      SeparatorColor="Silver"
+                      SeparatorVisibility="Default">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0"
+                                       Grid.Column="0"
+                                       VerticalOptions="Center"
+                                       WidthRequest="240"
+                                       Text="{Binding Duration}"/>
+                                <Label Grid.Row="0"
+                                       Grid.Column="1"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="End"
+                                       HorizontalTextAlignment="End"
+                                       Text="{Binding Income}"/>
+                                <Label Grid.Row="1"
+                                       Grid.Column="1"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="End"
+                                       HorizontalTextAlignment="End"
+                                       Text="{Binding Outcome}"/>
+                            </Grid>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
+        <BoxView BackgroundColor="Transparent"
+                 HorizontalOptions="Start"
+                 WidthRequest="40">
+            <BoxView.GestureRecognizers>
+                <SwipeGestureRecognizer Direction="Right" Swiped="OnSwiped" />
+            </BoxView.GestureRecognizers>
+        </BoxView>
+        <BoxView BackgroundColor="Transparent"
+                 HorizontalOptions="End"
+                 WidthRequest="40">
+            <BoxView.GestureRecognizers>
+                <SwipeGestureRecognizer Direction="Left" Swiped="OnSwiped" />
+            </BoxView.GestureRecognizers>
+        </BoxView>
+        <BoxView BackgroundColor="Transparent"
+                 VerticalOptions="Start"
+                 HeightRequest="40">
+            <BoxView.GestureRecognizers>
+                <SwipeGestureRecognizer Direction="Down" Swiped="OnSwiped" />
+            </BoxView.GestureRecognizers>
+        </BoxView>
+        <BoxView BackgroundColor="Transparent"
+                 VerticalOptions="End"
+                 HeightRequest="40">
+            <BoxView.GestureRecognizers>
+                <SwipeGestureRecognizer Direction="Up" Swiped="OnSwiped" />
+            </BoxView.GestureRecognizers>
+        </BoxView>
+    </Grid>
 </ContentPage>

@@ -16,6 +16,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{AA0359D3-4F21-41A2-B190-50E56EE0592A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedLibrary", "SharedLibrary\SharedLibrary.csproj", "{0F0F252A-0356-4C96-86C9-6EBA38998A62}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +42,14 @@ Global
 		{7D131848-7AA3-438B-83DB-0561E685DE13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D131848-7AA3-438B-83DB-0561E685DE13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D131848-7AA3-438B-83DB-0561E685DE13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA0359D3-4F21-41A2-B190-50E56EE0592A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA0359D3-4F21-41A2-B190-50E56EE0592A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA0359D3-4F21-41A2-B190-50E56EE0592A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA0359D3-4F21-41A2-B190-50E56EE0592A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F0F252A-0356-4C96-86C9-6EBA38998A62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F0F252A-0356-4C96-86C9-6EBA38998A62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F0F252A-0356-4C96-86C9-6EBA38998A62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F0F252A-0356-4C96-86C9-6EBA38998A62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,12 @@
+/Users/rainhu/Projects/MyMoney/SharedLibrary/bin/Debug/net8.0/SharedLibrary.deps.json
+/Users/rainhu/Projects/MyMoney/SharedLibrary/bin/Debug/net8.0/SharedLibrary.dll
+/Users/rainhu/Projects/MyMoney/SharedLibrary/bin/Debug/net8.0/SharedLibrary.pdb
+/Users/rainhu/Projects/MyMoney/SharedLibrary/obj/Debug/net8.0/SharedLibrary.GeneratedMSBuildEditorConfig.editorconfig
+/Users/rainhu/Projects/MyMoney/SharedLibrary/obj/Debug/net8.0/SharedLibrary.AssemblyInfoInputs.cache
+/Users/rainhu/Projects/MyMoney/SharedLibrary/obj/Debug/net8.0/SharedLibrary.AssemblyInfo.cs
+/Users/rainhu/Projects/MyMoney/SharedLibrary/obj/Debug/net8.0/SharedLibrary.csproj.CoreCompileInputs.cache
+/Users/rainhu/Projects/MyMoney/SharedLibrary/obj/Debug/net8.0/SharedLibrary.sourcelink.json
+/Users/rainhu/Projects/MyMoney/SharedLibrary/obj/Debug/net8.0/SharedLibrary.dll
+/Users/rainhu/Projects/MyMoney/SharedLibrary/obj/Debug/net8.0/refint/SharedLibrary.dll
+/Users/rainhu/Projects/MyMoney/SharedLibrary/obj/Debug/net8.0/SharedLibrary.pdb
+/Users/rainhu/Projects/MyMoney/SharedLibrary/obj/Debug/net8.0/ref/SharedLibrary.dll
